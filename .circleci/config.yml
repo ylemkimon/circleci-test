@@ -1,22 +1,25 @@
-version: 2.1
+version: 2
 jobs:
   test:
-    parameters:
-      browser:
-        type: string
     docker:
       - image: circleci/node:6
-      - image: << parameters.browser >>
     steps:
       - checkout
-      - run:
-          command: echo << parameters.browser >>
+  build:
+    docker:
+      - image: circleci/node:6
+    steps:
+      - checkout
 
 workflows:
   version: 2
   test:
     jobs:
       - test:
-          browser: selenium/standalone-chrome:2.48.2
-      - test:
-          browser: selenium/standalone-firefox:2.48.2
+          filters:
+            branches:
+              ignore: gh-pages
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
