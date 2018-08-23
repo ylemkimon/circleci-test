@@ -6,6 +6,7 @@ jobs:
         type: string
     docker:
       - image: circleci/node:6
+      - image: << parameters.browser >>
     steps:
       - checkout
 
@@ -13,4 +14,7 @@ workflows:
   version: 2
   test:
     jobs:
-      - test
+      - test:
+          browser: selenium/standalone-chrome:2.48.2
+      - test:
+          browser: selenium/standalone-firefox:2.48.2
