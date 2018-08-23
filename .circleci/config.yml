@@ -6,9 +6,10 @@ jobs:
         type: string
     docker:
       - image: circleci/node:6
-      - image: << parameters.browser >>
     steps:
       - checkout
+      - run:
+          command: echo << parameters.browser >>
 
 workflows:
   version: 2
