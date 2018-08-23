@@ -9,6 +9,7 @@ jobs:
       - image: << parameters.browser >>
     steps:
       - checkout
+      - echo << parameters.browser >>
 
 workflows:
   version: 2
