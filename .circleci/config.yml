@@ -5,9 +5,15 @@ jobs:
       - image: circleci/node:6
     steps:
       - checkout
+  build:
+    docker:
+      - image: circleci/node:6
+    steps:
+      - checkout
 
 workflows:
   version: 2
   test:
     jobs:
       - test
+      - build
