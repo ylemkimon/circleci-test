@@ -18,3 +18,5 @@ workflows:
     jobs:
       - test:
           browser: selenium/standalone-chrome:2.48.2
+      - test:
+          browser: selenium/standalone-firefox:2.48.2
