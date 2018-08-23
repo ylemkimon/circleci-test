@@ -6,7 +6,6 @@ jobs:
         type: string
     docker:
       - image: circleci/node:6
-      - image: << parameters.browser >>
     steps:
       - checkout
       - date
