@@ -1,28 +1,24 @@
 version: 2.1
 
-executors:
-  node6:
-    docker:
-      - image: circleci/node:6
-  node8:
-    docker:
-      - image: circleci/node:8
-
 jobs:
   test:
     parameters:
-      exc:
-        type: enum
-        enum: ["node6", "node8"]
-    executor: << parameters.exc >>
+      middle:
+        type: steps
+    docker:
+      - image: circleci/node:8
     steps:
-      - checkout
+      - run: echo start
+      - steps: << parameters.middle >>
+      - run: echo done
 
 workflows:
   version: 2
   test:
     jobs:
       - test:
-          exc: node6
+          middle:
+            - run: echo 1
       - test:
-          exc: node8
+          middle:
+            - run: echo 2
