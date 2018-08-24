@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 jobs:
   sayhello:
@@ -10,7 +10,7 @@ jobs:
         type: string
     machine: true
     steps:
-      - run: echo "Hello << parameters.saywhat >>"
+      - echo "Hello << parameters.saywhat >>"
 
 workflows:
   version: 2
