@@ -1,13 +1,19 @@
-version: 2
+version: 2.1
+
+executors:
+  node6:
+    docker:
+      - image: circleci/node:6
+  node8:
+    docker:
+      - image: circleci/node:8
+
 jobs:
   test:
-    docker:
-      - image: circleci/node:6
-    steps:
-      - checkout
-  build:
-    docker:
-      - image: circleci/node:6
+    parameters:
+      exc:
+        type: string
+    executor: << parameters.exc >>
     steps:
       - checkout
 
@@ -16,10 +22,6 @@ workflows:
   test:
     jobs:
       - test:
-          filters:
-            branches:
-              ignore: gh-pages
-      - build:
-          filters:
-            branches:
-              ignore: gh-pages
+          exc: node6
+      - test:
+          exc: node8
