@@ -1,27 +1,20 @@
-version: 2.1
-
-executors:
-  node6:
-    docker:
-      - image: circleci/node:6
-  node8:
-    docker:
-      - image: circleci/node:8
+version: 2
 
 jobs:
-  test:
+  sayhello:
+    description: A job that does very little other than demonstrate what a parameterized job looks like
     parameters:
-      exc:
+      saywhat:
+        description: "To whom shall we say hello?"
+        default: "World"
         type: string
-    executor: << parameters.exc >>
+    machine: true
     steps:
-      - checkout
+      - echo "Hello << parameters.saywhat >>"
 
 workflows:
   version: 2
-  test:
+  build:
     jobs:
-      - test:
-          exc: node6
-      - test:
-          exc: node8
+      - sayhello
+          saywhat: Everyone
