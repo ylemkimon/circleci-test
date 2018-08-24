@@ -10,7 +10,7 @@ jobs:
         type: string
     machine: true
     steps:
-      - echo "Hello << parameters.saywhat >>"
+      - run: echo "Hello << parameters.saywhat >>"
 
 workflows:
   version: 2
