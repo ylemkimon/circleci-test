@@ -3,3 +3,5 @@ jobs:
   skip:
     docker:
       - image: circleci/node:6
+    steps:
+      - run: 'true'
