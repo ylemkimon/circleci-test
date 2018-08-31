@@ -1,24 +1,5 @@
 version: 2.1
-
 jobs:
-  test:
-    parameters:
-      middle:
-        type: steps
+  skip:
     docker:
-      - image: circleci/node:8
-    steps:
-      - run: echo start
-      - steps: << parameters.middle >>
-      - run: echo done
-
-workflows:
-  version: 2
-  test:
-    jobs:
-      - test:
-          middle:
-            - run: echo 1
-      - test:
-          middle:
-            - run: echo 2
+      - image: circleci/node:6
