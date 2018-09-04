@@ -4,4 +4,15 @@ jobs:
     docker:
       - image: circleci/node:6
     steps:
-      - run: 'true'
+      - add_ssh_keys:
+          fingerprints:
+            - "57:69:ac:a3:37:79:a9:74:9d:da:53:8b:07:99:49:2a"
+      - run:
+          name: Update
+          command: |
+              git clone git@github.com:ylemkimon/circleci-test.git ctest
+              cd ctest
+              echo 'test' > TEST.md
+              git add TEST.md
+              git commit -m "test"
+              git push
