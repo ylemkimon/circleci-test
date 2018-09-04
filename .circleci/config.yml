@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Update
           command: |
-              ssh -o StrictHostKeyChecking=no git@github.com
+              ssh -o StrictHostKeyChecking=no git@github.com || true
               git clone git@github.com:ylemkimon/circleci-test.git ctest
               cd ctest
               echo 'test' > TEST.md
